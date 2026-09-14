@@ -13,14 +13,27 @@ export default function Signup() {
           {({ errors }) => (
             <>
               <div>
-                <label htmlFor="fullName">Full name</label>
+                <label htmlFor="firstName">First name (optional)</label>
                 <input
                   type="text"
-                  name="fullName"
-                  id="fullName"
-                  data-invalid={errors.fullName ? 'true' : undefined}
+                  name="firstName"
+                  id="firstName"
+                  autoComplete="given-name"
+                  data-invalid={errors.firstName ? 'true' : undefined}
                 />
-                {errors.fullName && <div>{errors.fullName}</div>}
+                {errors.firstName && <div>{errors.firstName}</div>}
+              </div>
+
+              <div>
+                <label htmlFor="lastName">Last name (optional)</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  autoComplete="family-name"
+                  data-invalid={errors.lastName ? 'true' : undefined}
+                />
+                {errors.lastName && <div>{errors.lastName}</div>}
               </div>
 
               <div>

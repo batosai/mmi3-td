@@ -2,6 +2,7 @@ import { UserSchema } from '#database/schema'
 import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
+import { Role } from '#enums/roles'
 
 export default class User extends compose(UserSchema, withAuthFinder(hash)) {
   get initials() {
@@ -10,5 +11,13 @@ export default class User extends compose(UserSchema, withAuthFinder(hash)) {
       return `${first.charAt(0)}${last.charAt(0)}`.toUpperCase()
     }
     return `${first.slice(0, 2)}`.toUpperCase()
+  }
+
+  get fullName(): string {
+    return [this.firstName, this.lastName].filter(Boolean).join(' ')
+  }
+
+  get isAdmin(): boolean {
+    return this.role === Role.ADMIN
   }
 }

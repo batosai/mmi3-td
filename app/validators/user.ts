@@ -14,7 +14,8 @@ const password = () => vine.string().minLength(8).maxLength(32)
  * has no way to know about the errors reported for this field.
  */
 export const signupValidator = vine.create({
-  fullName: vine.string().nullable(),
+  firstName: vine.string().trim().maxLength(64).nullable().optional(),
+  lastName: vine.string().trim().maxLength(64).nullable().optional(),
   email: email().unique({ table: 'users', column: 'email' }),
   password: password().confirmed({
     confirmationField: 'passwordConfirmation',

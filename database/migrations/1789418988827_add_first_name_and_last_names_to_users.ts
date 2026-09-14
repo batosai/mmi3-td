@@ -9,15 +9,17 @@ export default class extends BaseSchema {
       table.string('first_name').nullable()
       table.string('last_name').nullable()
       table.enum('role', ['user', 'admin']).notNullable().defaultTo('user')
+      table.timestamp('last_login_at')
     })
   }
 
   async down() {
     this.schema.alterTable(this.tableName, (table) => {
+      table.string('full_name').nullable()
       table.dropColumn('first_name')
       table.dropColumn('last_name')
       table.dropColumn('role')
-      table.string('full_name').nullable()
+      table.dropColumn('last_login_at')
     })
   }
 }

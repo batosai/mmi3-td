@@ -1,5 +1,6 @@
 import User from '#models/user'
 import { loginValidator } from '#validators/user'
+import { DateTime } from 'luxon'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class SessionController {
@@ -12,6 +13,10 @@ export default class SessionController {
     const user = await User.verifyCredentials(email, password)
 
     await auth.use('web').login(user)
+
+    user.lastLoginAt = DateTime.local()
+    await user.save()
+
     response.redirect().toRoute('home')
   }
 

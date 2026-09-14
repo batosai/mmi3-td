@@ -8,7 +8,7 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class UserSchema extends BaseModel {
-  static $columns = ['createdAt', 'email', 'firstName', 'id', 'lastName', 'password', 'role', 'updatedAt'] as const
+  static $columns = ['createdAt', 'email', 'firstName', 'id', 'lastLoginAt', 'lastName', 'password', 'role', 'updatedAt'] as const
   $columns = UserSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -18,6 +18,8 @@ export class UserSchema extends BaseModel {
   declare firstName: string | null
   @column({ isPrimary: true })
   declare id: number
+  @column.dateTime()
+  declare lastLoginAt: DateTime | null
   @column()
   declare lastName: string | null
   @column({ serializeAs: null })

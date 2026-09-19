@@ -19,6 +19,54 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'movies.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/movies'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/movies_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/movies_controller').default['index']>>>
+    }
+  }
+  'movies.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/movies/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/movies_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/movies_controller').default['show']>>>
+    }
+  }
+  'movies.reviews.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/movies/:movie_id/reviews'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { movie_id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/reviews_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/reviews_controller').default['index']>>>
+    }
+  }
+  'movies.reviews.store': {
+    methods: ["POST"]
+    pattern: '/movies/:movie_id/reviews'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { movie_id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/reviews_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/reviews_controller').default['store']>>>
+    }
+  }
   'new_account.create': {
     methods: ["GET","HEAD"]
     pattern: '/signup'

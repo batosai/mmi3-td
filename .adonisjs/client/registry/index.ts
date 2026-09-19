@@ -12,6 +12,30 @@ const routes = {
     tokens: [{"old":"/","type":0,"val":"/","end":""}],
     types: placeholder as Registry['home']['types'],
   },
+  'movies.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/movies',
+    tokens: [{"old":"/movies","type":0,"val":"movies","end":""}],
+    types: placeholder as Registry['movies.index']['types'],
+  },
+  'movies.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/movies/:id',
+    tokens: [{"old":"/movies/:id","type":0,"val":"movies","end":""},{"old":"/movies/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['movies.show']['types'],
+  },
+  'movies.reviews.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/movies/:movie_id/reviews',
+    tokens: [{"old":"/movies/:movie_id/reviews","type":0,"val":"movies","end":""},{"old":"/movies/:movie_id/reviews","type":1,"val":"movie_id","end":""},{"old":"/movies/:movie_id/reviews","type":0,"val":"reviews","end":""}],
+    types: placeholder as Registry['movies.reviews.index']['types'],
+  },
+  'movies.reviews.store': {
+    methods: ["POST"],
+    pattern: '/movies/:movie_id/reviews',
+    tokens: [{"old":"/movies/:movie_id/reviews","type":0,"val":"movies","end":""},{"old":"/movies/:movie_id/reviews","type":1,"val":"movie_id","end":""},{"old":"/movies/:movie_id/reviews","type":0,"val":"reviews","end":""}],
+    types: placeholder as Registry['movies.reviews.store']['types'],
+  },
   'new_account.create': {
     methods: ["GET","HEAD"],
     pattern: '/signup',

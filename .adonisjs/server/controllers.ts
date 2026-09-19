@@ -4,6 +4,8 @@
  */
 
 export const controllers = {
+  Movies: () => import('#controllers/movies_controller'),
   NewAccount: () => import('#controllers/new_account_controller'),
+  Reviews: () => import('#controllers/reviews_controller'),
   Session: () => import('#controllers/session_controller'),
 }

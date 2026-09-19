@@ -41,6 +41,7 @@ export default function Layout({ children }: { children: ReactElement<Data.Share
           </div>
           <div>
             <nav>
+              <Link route="movies.index">Movies</Link>
               {children.props.user ? (
                 <>
                   <span>{children.props.user.initials}</span>

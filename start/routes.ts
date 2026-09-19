@@ -13,6 +13,9 @@ import router from '@adonisjs/core/services/router'
 
 router.on('/').renderInertia('home', {}).as('home')
 
+router.resource('movies', controllers.Movies).only(['index', 'show'])
+router.resource('movies.reviews', controllers.Reviews).only(['index', 'store'])
+
 router
   .group(() => {
     router.get('signup', [controllers.NewAccount, 'create'])

@@ -5,5 +5,9 @@ export default class MoviesController {
     return inertia.render('movies/index', {})
   }
 
-  async show({ params }: HttpContext) {}
+  async show({ params, inertia }: HttpContext) {
+    return inertia.render('movies/show', {
+      id: params.id,
+    })
+  }
 }

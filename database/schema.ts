@@ -7,6 +7,39 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class MovieSchema extends BaseModel {
+  static $columns = ['backdropPath', 'createdAt', 'id', 'originalLanguage', 'originalTitle', 'overview', 'popularity', 'posterPath', 'releaseDate', 'title', 'tmdbId', 'updatedAt', 'voteAverage', 'voteCount'] as const
+  $columns = MovieSchema.$columns
+  @column()
+  declare backdropPath: string | null
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare originalLanguage: string | null
+  @column()
+  declare originalTitle: string | null
+  @column()
+  declare overview: string | null
+  @column()
+  declare popularity: number
+  @column()
+  declare posterPath: string | null
+  @column.date()
+  declare releaseDate: DateTime | null
+  @column()
+  declare title: string
+  @column()
+  declare tmdbId: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare voteAverage: number
+  @column()
+  declare voteCount: number
+}
+
 export class UserSchema extends BaseModel {
   static $columns = ['createdAt', 'email', 'firstName', 'id', 'lastLoginAt', 'lastName', 'password', 'role', 'updatedAt'] as const
   $columns = UserSchema.$columns

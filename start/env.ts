@@ -24,4 +24,10 @@ export default await Env.create(new URL('../', import.meta.url), {
 
   // Session
   SESSION_DRIVER: Env.schema.enum(['cookie', 'memory', 'database'] as const),
+
+  // TMDB
+  TMDB_API_KEY: Env.schema.secret(),
+  TMDB_READ_ACCESS_TOKEN: Env.schema.secret(),
+  TMDB_BASE_URL: Env.schema.string({ format: 'url' }),
+  TMDB_IMAGE_BASE_URL: Env.schema.string({ format: 'url' }),
 })
